@@ -1,0 +1,1 @@
+create table visitors(name varchar(30) NOT NULL,username varchar(40) NOT NULL, surname varchar(30) NOT NULL, id int NOT NULL, mobile int NOT NULL, next_of_kin varchar(30) NOT NULL, next_of_kin_mobile int NOT NULL, primary key (id),foreign key(username) references login(username));

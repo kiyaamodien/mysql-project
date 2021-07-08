@@ -1,0 +1,3 @@
+ # con = mysql.connect(host="localhost", user=root, password="", database="mydatabase")
+        # cursor = con.cursor()
+        # cursor.execute("insert into student values('"+ name +'", '"+ username +'", '"+ surname +'", '"+ id +'",'"+ mobile +'",'"+ next_of_kin +'", '"+ next_of_kin_mobile +'")")
