@@ -4,14 +4,14 @@ from tkinter import messagebox as mb
 
 
 reg = Tk()
-reg.title("Create student")
+reg.title("Create User")
 reg.resizable(False, False)
 
 db = mysql.connector.connect(
     user="lifechoices",
     password="@Lifechoices1234",
     host="localhost",
-    database="lifechoicesonline",
+    database="mydb",
     auth_plugin="mysql_native_password"
 )
 
@@ -30,17 +30,28 @@ nameReg = Entry(reg)
 usrNamelb = Label(reg, text="Username:", fg="white", bg="black")
 psswrdlb = Label(reg, text="Password:", fg="white", bg="black")
 
+snameLb = Label(reg, text="surname:", fg="white", bg="black")
+sname = Entry(reg)
+
+idLb = Label(reg, text="id:", fg="white", bg="black")
+id = Entry(reg)
+
+mobileLb = Label(reg, text="mobile:", fg="white", bg="black")
+mobile = Entry(reg)
+
+next_of_kin_mobileLb = Label(reg, text="next of kin mobile:", fg="white", bg="black")
+next_of_kin_mobile = Entry(reg)
+
+
+
 usrName = Entry(reg)
 psswrd = Entry(reg, show='*')
 
 
 def addUser():
     try:
-        cursor.execute(
-            "CREATE TABLE IF NOT EXISTS users(id int(11) Not null primary key AUTO_INCREMENT, full_name varchar(60) Default null, "
-            "username varchar(50) Default null ,password varchar(20) Default null)")
         user_info = (nameReg.get(), str(usrName.get()), str(psswrd.get()))
-        comm = "INSERT INTO users (full_name, username, password) VALUES (%s, %s, %s)"
+        comm = "INSERT INTO users(name, username, password, surname, id, mobile, next_of_kin, next_of_kin_mobile) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 
         cursor.execute(comm, user_info)
 
@@ -57,7 +68,7 @@ def addUser():
 
 def back():
     reg.destroy()
-    import main1
+    import main
 
 
 
@@ -71,9 +82,19 @@ usrNamelb.place(x=10, y=140)
 usrName.place(x=90, y=140)
 psswrdlb.place(x=10, y=180)
 psswrd.place(x=90, y=180)
-cBtn.place(x=10, y=220)
+cBtn.place(x=10, y=400)
 bBtn.place(x=350, y=220)
-shwPss.place(x=265, y=140)
+shwPss.place(x=280, y=180)
+snameLb.place(x=10, y=220)
+sname.place(x=90, y=220)
+idLb.place(x=10, y=260)
+id.place(x=90, y=260)
+mobileLb.place(x=10, y=300)
+mobile.place(x=90, y=300)
+next_of_kin_mobileLb.place(x=10, y=340)
+next_of_kin_mobile.place(x=160, y=340)
+
+
 
 # Center Gui to screen
 window_height = 270
@@ -88,5 +109,5 @@ y_cordinate = int((screen_height / 2) - (window_height / 2))
 reg.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
 
 reg.config(bg="black")
-reg.geometry("400x270")
+reg.geometry("700x450")
 reg.mainloop()

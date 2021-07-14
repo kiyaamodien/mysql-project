@@ -8,8 +8,8 @@ db = mysql.connector.connect(
     user="lifechoices",
     password="@Lifechoices1234",
     host="localhost",
-    database="",
-    auth_plugin="mysql_native_password"
+    database="mydb",
+    auth_plugin="mysql_native_password", buffered=True
 )
 
 cursor = db.cursor()
@@ -44,7 +44,7 @@ def login():  # Function to login
         y = login1.strftime("%H:%M:%S")
         dt = login1.strftime("%d/%m/%y")
         time1 = usr, str(dt),  str(y)
-        comm_time1 = "INSERT INTO time_in(full_name, date, logged_in)VALUES (%s, %s, %s)"
+        comm_time1 = "INSERT INTO login(username, date, logged_in)VALUES (%s, %s, %s)"
         cursor.execute(comm_time1, time1)
         db.commit()
 
